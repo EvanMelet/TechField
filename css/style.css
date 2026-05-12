@@ -250,10 +250,76 @@ html, body {
   letter-spacing: .2px;
 }
 
+.topbar-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .topbar-sub {
   font-size: 12px;
   color: var(--text-3);
   margin-top: 3px;
+}
+
+/* ── STATUS PICKER ───────────────────────────────────── */
+.status-picker {
+  position: relative;
+}
+
+.status-picker .badge {
+  cursor: pointer;
+  user-select: none;
+  gap: 6px;
+}
+
+.status-picker .badge:hover { opacity: .85; }
+
+.status-caret {
+  width: 8px !important;
+  height: 5px !important;
+  margin-left: 1px;
+  flex-shrink: 0;
+}
+
+.status-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  min-width: 175px;
+  z-index: 200;
+  overflow: hidden;
+}
+
+.status-menu.open {
+  display: block;
+  animation: fadeIn .15s ease;
+}
+
+.status-opt {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-1);
+  cursor: pointer;
+  transition: background .1s;
+}
+
+.status-opt:hover { background: var(--surface2); }
+
+.status-opt svg {
+  width: 8px !important;
+  height: 8px !important;
+  flex-shrink: 0;
 }
 
 .topbar-right {
@@ -275,8 +341,10 @@ html, body {
   letter-spacing: .3px;
 }
 
-.badge-online  { background: var(--teal-light); color: var(--teal-dark); border: 1px solid var(--teal-mid); }
+.badge-online  { background: var(--teal-light);  color: var(--teal-dark);  border: 1px solid var(--teal-mid); }
 .badge-offline { background: var(--amber-light); color: var(--amber-dark); border: 1px solid #FAC775; }
+.badge-dnd     { background: var(--red-light);   color: var(--red-dark);   border: 1px solid #FCA5A5; }
+.badge-away    { background: var(--surface2);    color: var(--text-2);     border: 1px solid var(--border2); }
 .badge-todo    { background: var(--amber-light); color: var(--amber-dark); }
 .badge-inprog  { background: var(--blue-light);  color: var(--blue-dark); }
 .badge-done    { background: var(--green-light); color: var(--green-dark); }

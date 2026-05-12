@@ -159,9 +159,39 @@ function updateClock() {
   el.textContent = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
 }
 
+// ── STATUS PICKER ─────────────────────────────────────
+const STATUS_CONFIG = {
+  online:  { label: 'Connecté',        cls: 'badge-online',  dot: 'var(--teal)' },
+  offline: { label: 'Déconnecté',      cls: 'badge-offline', dot: 'var(--amber)' },
+  dnd:     { label: 'Ne pas déranger', cls: 'badge-dnd',     dot: 'var(--red)' },
+  away:    { label: 'Absent',          cls: 'badge-away',    dot: 'var(--border2)' },
+};
+
+function toggleStatusMenu() {
+  document.getElementById('status-menu').classList.toggle('open');
+}
+
+function setStatus(key) {
+  const cfg = STATUS_CONFIG[key];
+  const badge = document.getElementById('status-badge');
+  const dot   = document.getElementById('status-dot');
+  const label = document.getElementById('status-label');
+  badge.className = `badge ${cfg.cls}`;
+  dot.style.fill  = cfg.dot;
+  label.textContent = cfg.label;
+  document.getElementById('status-menu').classList.remove('open');
+}
+
 // ── INIT ──────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initSignature();
   updateClock();
   setInterval(updateClock, 30000);
+
+  document.addEventListener('click', e => {
+    const picker = document.getElementById('status-picker');
+    if (picker && !picker.contains(e.target)) {
+      document.getElementById('status-menu').classList.remove('open');
+    }
+  });
 });

@@ -88,11 +88,34 @@
 
       <div class="topbar">
         <div>
-          <div class="topbar-title">Bonjour, Marc</div>
-          <span class="badge badge-online">
-            <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" class="dot-online"/></svg>
-            Connecté
-          </span>
+          <div class="topbar-title-row">
+            <div class="topbar-title">Bonjour, Marc</div>
+            <div class="status-picker" id="status-picker">
+              <span class="badge badge-online" id="status-badge" onclick="toggleStatusMenu()">
+                <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" id="status-dot" class="dot-online"/></svg>
+                <span id="status-label">Connecté</span>
+                <svg class="status-caret" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+              </span>
+              <div class="status-menu" id="status-menu">
+                <div class="status-opt" onclick="setStatus('online')">
+                  <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="var(--teal)"/></svg>
+                  Connecté
+                </div>
+                <div class="status-opt" onclick="setStatus('offline')">
+                  <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="var(--amber)"/></svg>
+                  Déconnecté
+                </div>
+                <div class="status-opt" onclick="setStatus('dnd')">
+                  <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="var(--red)"/></svg>
+                  Ne pas déranger
+                </div>
+                <div class="status-opt" onclick="setStatus('away')">
+                  <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="var(--border2)"/></svg>
+                  Absent
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="topbar-sub">Mardi 12 mai 2026 &nbsp;·&nbsp; Sites Lyon &amp; Bordeaux</div>
         </div>
         <div class="topbar-right">
