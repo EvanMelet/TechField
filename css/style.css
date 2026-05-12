@@ -264,22 +264,29 @@ html, body {
 }
 
 /* ── STATUS PICKER ───────────────────────────────────── */
-.status-picker {
-  display: inline-flex;
+.sdot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
+.sdot-teal  { background: var(--teal); }
+.sdot-amber { background: var(--amber); }
+.sdot-red   { background: var(--red); }
+.sdot-gray  { background: var(--border2); }
+
+.status-picker { display: inline-flex; }
 
 .status-picker .badge {
   cursor: pointer;
   user-select: none;
   gap: 6px;
 }
-
 .status-picker .badge:hover { opacity: .85; }
 
 .status-caret {
-  width: 8px !important;
-  height: 5px !important;
-  margin-left: 1px;
+  display: block;
   flex-shrink: 0;
 }
 
@@ -290,9 +297,8 @@ html, body {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  min-width: 175px;
+  min-width: 170px;
   z-index: 9999;
-  overflow: hidden;
 }
 
 .status-menu.open {
@@ -311,14 +317,7 @@ html, body {
   cursor: pointer;
   transition: background .1s;
 }
-
 .status-opt:hover { background: var(--surface2); }
-
-.status-opt svg {
-  width: 8px !important;
-  height: 8px !important;
-  flex-shrink: 0;
-}
 
 .topbar-right {
   display: flex;

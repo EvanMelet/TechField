@@ -161,10 +161,10 @@ function updateClock() {
 
 // ── STATUS PICKER ─────────────────────────────────────
 const STATUS_CONFIG = {
-  online:  { label: 'Connecté',        cls: 'badge-online',  dot: 'var(--teal)' },
-  offline: { label: 'Déconnecté',      cls: 'badge-offline', dot: 'var(--amber)' },
-  dnd:     { label: 'Ne pas déranger', cls: 'badge-dnd',     dot: 'var(--red)' },
-  away:    { label: 'Absent',          cls: 'badge-away',    dot: 'var(--border2)' },
+  online:  { label: 'Connecté',        badge: 'badge-online',  dot: 'sdot sdot-teal' },
+  offline: { label: 'Déconnecté',      badge: 'badge-offline', dot: 'sdot sdot-amber' },
+  dnd:     { label: 'Ne pas déranger', badge: 'badge-dnd',     dot: 'sdot sdot-red' },
+  away:    { label: 'Absent',          badge: 'badge-away',    dot: 'sdot sdot-gray' },
 };
 
 function toggleStatusMenu() {
@@ -181,13 +181,10 @@ function toggleStatusMenu() {
 }
 
 function setStatus(key) {
-  const cfg = STATUS_CONFIG[key];
-  const badge = document.getElementById('status-badge');
-  const dot   = document.getElementById('status-dot');
-  const label = document.getElementById('status-label');
-  badge.className = `badge ${cfg.cls}`;
-  dot.style.fill  = cfg.dot;
-  label.textContent = cfg.label;
+  const cfg   = STATUS_CONFIG[key];
+  document.getElementById('status-badge').className = `badge ${cfg.badge}`;
+  document.getElementById('status-dot').className   = cfg.dot;
+  document.getElementById('status-label').textContent = cfg.label;
   document.getElementById('status-menu').classList.remove('open');
 }
 
