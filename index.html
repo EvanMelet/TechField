@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>TechField — IndusMaint</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ══════════════════════════════════════
+       SIDEBAR
+  ══════════════════════════════════════ -->
+  <aside class="sidebar">
+
+    <div class="sidebar-logo">
+      <div class="logo-name">TechField</div>
+      <div class="logo-sub">IndusMaint</div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <div class="nav-group-label">Principal</div>
+
+      <div class="nav-item active" data-screen="s-dashboard" onclick="navigate('s-dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        <span>Dashboard</span>
+        <span class="nav-badge">3</span>
+      </div>
+
+      <div class="nav-item" data-screen="s-equip" onclick="navigate('s-equip')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+        </svg>
+        <span>Équipement</span>
+      </div>
+
+      <div class="nav-item" data-screen="s-rapport" onclick="navigate('s-rapport')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span>Rapport</span>
+      </div>
+
+      <div class="nav-item" data-screen="s-notifs" onclick="navigate('s-notifs')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/>
+        </svg>
+        <span>Notifications</span>
+        <span class="nav-badge">4</span>
+      </div>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-block">
+        <div class="user-avatar">MD</div>
+        <div>
+          <div class="user-name">Marc Dupont</div>
+          <div class="user-role">Technicien terrain</div>
+        </div>
+      </div>
+      <div class="sync-status">
+        <div class="sync-dot"></div>
+        <span>Sync <span id="current-time">09:14</span></span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════ -->
+  <main class="main">
+
+
+    <!-- ────────────────────────────────────
+         SCREEN 1 — DASHBOARD
+    ──────────────────────────────────── -->
+    <section id="s-dashboard" class="screen active">
+
+      <div class="topbar">
+        <div>
+          <div class="topbar-title">Bonjour, Marc</div>
+          <div class="topbar-sub">Mardi 12 mai 2026 &nbsp;·&nbsp; Sites Lyon &amp; Bordeaux</div>
+        </div>
+        <div class="topbar-right">
+          <span class="badge badge-online">
+            <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" class="dot-online"/></svg>
+            Connecté
+          </span>
+          <span style="font-size:10px;color:var(--text-3);font-family:var(--font-mono);">
+            Sync il y a 4 min
+          </span>
+        </div>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-label">Ordres du jour</div>
+          <div class="stat-value">3</div>
+          <div class="stat-sub">2 préventifs · 1 curatif</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Terminées</div>
+          <div class="stat-value stat-teal">1</div>
+          <div class="stat-sub">Rapport envoyé à SAP</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">En attente</div>
+          <div class="stat-value stat-amber">2</div>
+          <div class="stat-sub">À démarrer</div>
+        </div>
+      </div>
+
+      <!-- Two col layout -->
+      <div class="two-col two-col-6040">
+
+        <!-- Left: orders -->
+        <div>
+          <div class="section-title">Mes ordres du jour</div>
+
+          <div class="order-card urgent">
+            <div class="order-header">
+              <div>
+                <div class="order-equip">Pompe Grundfos CR 32-8</div>
+                <div class="order-site">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Site Lyon — Station de pompage
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+                <span class="tag badge-todo">À FAIRE</span>
+                <span class="tag badge-urgent">URGENT</span>
+              </div>
+            </div>
+            <div class="order-tags">
+              <span class="tag badge-cur">CURATIF</span>
+              <div class="order-duration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ~3h estimées
+              </div>
+            </div>
+          </div>
+
+          <div class="order-card in-progress">
+            <div class="order-header">
+              <div>
+                <div class="order-equip">Compresseur Atlas Copco GA 37</div>
+                <div class="order-site">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Site Lyon — Atelier B, Rangée 3
+                </div>
+              </div>
+              <span class="tag badge-inprog">EN COURS</span>
+            </div>
+            <div class="order-tags">
+              <span class="tag badge-prev">PRÉVENTIF</span>
+              <div class="order-duration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ~2h estimées
+              </div>
+            </div>
+          </div>
+
+          <div class="order-card done">
+            <div class="order-header">
+              <div>
+                <div class="order-equip">Convoyeur Interroll EC 5000</div>
+                <div class="order-site">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Site Bordeaux — Entrepôt A
+                </div>
+              </div>
+              <span class="tag badge-done">TERMINÉ</span>
+            </div>
+            <div class="order-tags">
+              <span class="tag badge-prev">PRÉVENTIF</span>
+              <div class="order-duration">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                1h45 réalisées
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: quick actions + AI -->
+        <div>
+          <div class="section-title">Accès rapide</div>
+          <div class="card" style="margin-bottom:16px">
+            <div class="qa-grid">
+              <div class="qa-btn" onclick="navigate('s-equip')">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M3 9h6"/><path d="M3 15h6"/>
+                </svg>
+                Scan QR
+              </div>
+              <div class="qa-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                  <path d="M9 15h6M9 11h6"/>
+                </svg>
+                Mes PDF
+              </div>
+              <div class="qa-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+                  <polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 1 0 .5-4.5"/>
+                  <polyline points="3 3 3 9 9 9"/>
+                </svg>
+                Historique
+              </div>
+            </div>
+          </div>
+
+          <div class="section-title">Analyse IA</div>
+          <div class="ai-strip">
+            <div class="ai-strip-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/>
+                <path d="M12 7v4M8 11V9M16 11V9"/>
+              </svg>
+              Assistant TechField
+            </div>
+            <p>2 interventions sur équipements à historique critique aujourd'hui. Consultez les fiches avant de démarrer — la pompe CR 32-8 a connu 3 pannes en 6 mois.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ────────────────────────────────────
+         SCREEN 2 — ÉQUIPEMENT
+    ──────────────────────────────────── -->
+    <section id="s-equip" class="screen">
+
+      <div class="topbar">
+        <div>
+          <div class="topbar-title">Fiche équipement</div>
+          <div class="topbar-sub">Scannez un QR code ou sélectionnez un ordre de mission</div>
+        </div>
+        <span class="badge badge-offline-sm">
+          <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" class="dot-offline"/></svg>
+          Données disponibles offline
+        </span>
+      </div>
+
+      <div class="two-col two-col-5050">
+
+        <!-- Left: fiche -->
+        <div>
+          <div class="card" style="margin-bottom:14px">
+
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px">
+              <div>
+                <div class="equip-name">Compresseur Atlas Copco GA 37</div>
+                <div class="equip-meta" style="margin-top:8px">
+                  <div>Modèle &nbsp;<span>GA 37 VSD+</span></div>
+                  <div>N° série &nbsp;<span>ATC-2019-00847</span></div>
+                  <div>Site &nbsp;<span>Lyon — Atelier B, Rangée 3</span></div>
+                  <div>Mise en service &nbsp;<span>14 mars 2019</span></div>
+                </div>
+              </div>
+              <span class="badge badge-offline-sm" style="white-space:nowrap;margin-top:4px">
+                <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="var(--green)"/></svg>
+                Offline OK
+              </span>
+            </div>
+
+            <!-- AI summary -->
+            <div class="ai-strip" style="margin-bottom:14px">
+              <div class="ai-strip-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/>
+                  <path d="M12 7v4M8 11V9M16 11V9"/>
+                </svg>
+                Résumé IA
+              </div>
+              <p>Dernière panne : courroie d'entraînement (il y a 3 mois). Prochain entretien préventif recommandé dans 45 jours. Aucune pièce critique en rupture détectée dans le stock.</p>
+            </div>
+
+            <!-- PDF -->
+            <div class="pdf-row">
+              <div class="pdf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                  <path d="M9 13h6M9 17h4"/>
+                </svg>
+              </div>
+              <div>
+                <div class="pdf-name">Manuel_GA37_Maintenance.pdf</div>
+                <div class="pdf-size">14.2 MB · Téléchargé le 12/05/2026 à 07h58</div>
+              </div>
+              <span class="badge badge-offline-sm" style="margin-left:8px">Offline</span>
+              <div class="pdf-open">Ouvrir</div>
+            </div>
+
+            <div class="pdf-row" style="margin-top:8px">
+              <div class="pdf-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                  <path d="M9 13h6M9 17h4"/>
+                </svg>
+              </div>
+              <div>
+                <div class="pdf-name">Schéma_GA37_électrique.pdf</div>
+                <div class="pdf-size">6.8 MB · Téléchargé le 12/05/2026 à 07h58</div>
+              </div>
+              <span class="badge badge-offline-sm" style="margin-left:8px">Offline</span>
+              <div class="pdf-open">Ouvrir</div>
+            </div>
+
+          </div>
+
+          <button class="cta-btn" onclick="navigate('s-rapport')">
+            Démarrer l'intervention &nbsp;→
+          </button>
+        </div>
+
+        <!-- Right: history -->
+        <div>
+          <div class="card">
+            <div class="section-title" style="margin-bottom:14px">Historique des interventions</div>
+
+            <div class="history-timeline">
+
+              <div class="history-item">
+                <div class="h-line">
+                  <div class="h-dot"></div>
+                </div>
+                <div class="h-content">
+                  <div class="h-date">12 fév. 2026 &nbsp;·&nbsp; Marc Dupont</div>
+                  <div class="h-title">Remplacement courroie d'entraînement</div>
+                  <div class="h-meta">
+                    <span class="tag badge-cur" style="font-size:9px;padding:2px 7px">CURATIF</span>
+                    Durée : 2h30
+                    <span class="tag badge-done" style="font-size:9px;padding:2px 7px">CLÔTURÉ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="history-item">
+                <div class="h-line">
+                  <div class="h-dot amber"></div>
+                </div>
+                <div class="h-content">
+                  <div class="h-date">08 nov. 2025 &nbsp;·&nbsp; Luc Bernard</div>
+                  <div class="h-title">Vérification filtre + niveaux huile</div>
+                  <div class="h-meta">
+                    <span class="tag badge-prev" style="font-size:9px;padding:2px 7px">PRÉVENTIF</span>
+                    Durée : 1h
+                    <span class="tag badge-done" style="font-size:9px;padding:2px 7px">CLÔTURÉ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="history-item">
+                <div class="h-line">
+                  <div class="h-dot gray"></div>
+                </div>
+                <div class="h-content">
+                  <div class="h-date">15 juil. 2025 &nbsp;·&nbsp; Marc Dupont</div>
+                  <div class="h-title">Inspection annuelle complète</div>
+                  <div class="h-meta">
+                    <span class="tag badge-prev" style="font-size:9px;padding:2px 7px">PRÉVENTIF</span>
+                    Durée : 4h
+                    <span class="tag badge-done" style="font-size:9px;padding:2px 7px">CLÔTURÉ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="history-item">
+                <div class="h-line">
+                  <div class="h-dot gray"></div>
+                </div>
+                <div class="h-content">
+                  <div class="h-date">03 fév. 2025 &nbsp;·&nbsp; Luc Bernard</div>
+                  <div class="h-title">Remplacement filtre à huile + joint</div>
+                  <div class="h-meta">
+                    <span class="tag badge-cur" style="font-size:9px;padding:2px 7px">CURATIF</span>
+                    Durée : 1h15
+                    <span class="tag badge-done" style="font-size:9px;padding:2px 7px">CLÔTURÉ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="history-item">
+                <div class="h-line">
+                  <div class="h-dot gray"></div>
+                </div>
+                <div class="h-content">
+                  <div class="h-date">22 juin 2024 &nbsp;·&nbsp; Marc Dupont</div>
+                  <div class="h-title">Inspection annuelle + remplacement courroies</div>
+                  <div class="h-meta">
+                    <span class="tag badge-prev" style="font-size:9px;padding:2px 7px">PRÉVENTIF</span>
+                    Durée : 5h
+                    <span class="tag badge-done" style="font-size:9px;padding:2px 7px">CLÔTURÉ</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ────────────────────────────────────
+         SCREEN 3 — RAPPORT
+    ──────────────────────────────────── -->
+    <section id="s-rapport" class="screen">
+
+      <div class="topbar">
+        <div>
+          <div class="topbar-title">Rapport d'intervention</div>
+          <div class="topbar-sub">Compresseur Atlas Copco GA 37 &nbsp;·&nbsp; Ordre n° IM-2026-0847</div>
+        </div>
+        <span class="badge badge-online">
+          <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" class="dot-online"/></svg>
+          Connecté
+        </span>
+      </div>
+
+      <!-- Meta pill -->
+      <div class="meta-pill">
+        <strong>Technicien</strong> Marc Dupont &nbsp;·&nbsp;
+        <strong>Début</strong> 09:14 &nbsp;·&nbsp;
+        <strong>Site</strong> Lyon — Atelier B &nbsp;·&nbsp;
+        <strong>N° ordre</strong> IM-2026-0847
+      </div>
+
+      <div class="two-col two-col-5050">
+
+        <!-- Left col -->
+        <div>
+          <div class="card" style="margin-bottom:14px">
+
+            <div class="field-label">Type d'intervention</div>
+            <div class="type-row">
+              <div class="type-btn t-prev" onclick="selectType(this,'t-prev')">PRÉVENTIF</div>
+              <div class="type-btn" onclick="selectType(this,'t-cur')">CURATIF</div>
+              <div class="type-btn" onclick="selectType(this,'t-urg')">URGENCE</div>
+            </div>
+
+            <div class="field-label">Actions réalisées</div>
+            <div class="checklist">
+              <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-box checked">
+                  <svg viewBox="0 0 14 14" fill="none"><polyline points="2 7 5.5 10.5 12 3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="check-label">Vérification et remplacement filtre à air</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-box checked">
+                  <svg viewBox="0 0 14 14" fill="none"><polyline points="2 7 5.5 10.5 12 3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="check-label">Contrôle niveau et qualité huile</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-box">
+                  <svg viewBox="0 0 14 14" fill="none"><polyline points="2 7 5.5 10.5 12 3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="check-label">Test sécurité pressostat haute pression</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-box">
+                  <svg viewBox="0 0 14 14" fill="none"><polyline points="2 7 5.5 10.5 12 3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="check-label">Nettoyage refroidisseur et grilles</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this)">
+                <div class="check-box">
+                  <svg viewBox="0 0 14 14" fill="none"><polyline points="2 7 5.5 10.5 12 3" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="check-label">Inspection visuelle courroies et tensions</span>
+              </div>
+            </div>
+
+            <div class="field-label">Pièces remplacées</div>
+            <div id="pieces-container">
+              <div class="piece-row">
+                <input type="text" class="piece-input" placeholder="Référence (ex: 1089-2370-01)" value="1089-2370-01">
+                <input type="number" class="piece-qty" placeholder="Qté" min="1" value="1">
+              </div>
+            </div>
+            <div class="add-row" onclick="addPieceRow()">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              Ajouter une pièce
+            </div>
+
+          </div>
+
+          <!-- Photos V2 -->
+          <div class="card">
+            <div class="field-label" style="display:flex;align-items:center;gap:8px">
+              Photos avant/après
+              <span style="font-size:9px;background:var(--surface2);border:1px solid var(--border);border-radius:99px;padding:2px 8px;color:var(--text-3);font-weight:700;letter-spacing:.5px">V2</span>
+            </div>
+            <div class="photo-row">
+              <div class="photo-slot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Avant</span>
+                <span class="photo-v2">Disponible en V2</span>
+              </div>
+              <div class="photo-slot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Après</span>
+                <span class="photo-v2">Disponible en V2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right col -->
+        <div>
+          <div class="card" style="margin-bottom:14px">
+
+            <div class="field-label">Criticité des anomalies</div>
+            <div class="crit-row">
+              <div class="crit-btn" onclick="selectCrit(this)">AUCUNE</div>
+              <div class="crit-btn active" onclick="selectCrit(this)">MINEUR</div>
+              <div class="crit-btn" onclick="selectCrit(this)">MAJEUR</div>
+              <div class="crit-btn" onclick="selectCrit(this)">BLOQUANT</div>
+            </div>
+
+            <div class="field-label">Observations / Anomalies</div>
+            <textarea class="field-textarea" rows="4" placeholder="Décrivez les anomalies observées, l'état général de l'équipement...">Légère usure détectée sur le joint d'étanchéité du séparateur d'huile. Remplacement recommandé lors de la prochaine intervention préventive.</textarea>
+
+            <div class="field-label">Signature client</div>
+            <div style="position:relative">
+              <canvas id="sig-canvas" width="500" height="130"
+                style="width:100%;height:110px;border:2px dashed var(--border2);border-radius:var(--radius-md);cursor:crosshair;display:block;background:var(--surface2);touch-action:none">
+              </canvas>
+              <div id="sig-placeholder"
+                style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--text-3);pointer-events:none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:26px;height:26px">
+                  <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+                <span style="font-size:12px;font-weight:500">Zone de signature</span>
+              </div>
+            </div>
+            <div id="sig-clear" onclick="clearSignature()"
+              style="display:none;text-align:right;margin-top:6px;font-size:11px;color:var(--text-3);cursor:pointer;font-weight:600">
+              Effacer la signature
+            </div>
+
+          </div>
+
+          <button class="cta-btn" id="rapport-cta" onclick="submitRapport()">
+            Terminer et synchroniser
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ────────────────────────────────────
+         SCREEN 4 — NOTIFICATIONS
+    ──────────────────────────────────── -->
+    <section id="s-notifs" class="screen">
+
+      <div class="topbar">
+        <div>
+          <div class="topbar-title">Notifications</div>
+          <div class="topbar-sub">4 non lues &nbsp;·&nbsp; Mardi 12 mai 2026</div>
+        </div>
+        <span class="badge badge-online">
+          <svg viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" class="dot-online"/></svg>
+          Connecté
+        </span>
+      </div>
+
+      <!-- Offline recap -->
+      <div class="offline-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <line x1="1" y1="1" x2="23" y2="23"/>
+          <path d="M16.72 11.06A10.94 10.94 0 0119 12.55M5 12.55a10.94 10.94 0 015.17-2.39M10.71 5.05A16 16 0 0122.56 9M1.42 9a15.91 15.91 0 014.7-2.88M8.53 16.11a6 6 0 016.95 0M12 20h.01"/>
+        </svg>
+        <span><strong>3 notifications reçues hors ligne</strong> — synchronisées automatiquement à 08h47 lors de la reconnexion.</span>
+      </div>
+
+      <!-- Unread notifications -->
+      <div class="day-label">Aujourd'hui — non lues</div>
+
+      <div class="notif-card n-red" onclick="markRead(this)">
+        <div class="notif-icon ni-red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div class="notif-body">
+          <div class="notif-title">Nouvel ordre urgent — Pompe Grundfos CR 32-8</div>
+          <div class="notif-text">Site Lyon, station de pompage. Panne signalée par le chef de site. Intervention requise avant 14h00. Ordre n° IM-2026-0849.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <div class="notif-time">09:02</div>
+          <div class="unread-dot"></div>
+        </div>
+      </div>
+
+      <div class="notif-card n-amber" onclick="markRead(this)">
+        <div class="notif-icon ni-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
+          </svg>
+        </div>
+        <div class="notif-body">
+          <div class="notif-title">Nouvel ordre de mission assigné</div>
+          <div class="notif-text">Convoyeur Interroll EC 5000 · Site Bordeaux · Préventif · Prévu à 14h30. PDF technique pré-téléchargé en cache offline.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <div class="notif-time">08:47</div>
+          <div class="unread-dot"></div>
+        </div>
+      </div>
+
+      <div class="notif-card n-blue" onclick="markRead(this)">
+        <div class="notif-icon ni-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+        </div>
+        <div class="notif-body">
+          <div class="notif-title">Message du dispatcher — Sophie Roux</div>
+          <div class="notif-text">Le client Lyon demande un retour avant 13h sur l'état du compresseur GA 37. Peux-tu confirmer l'avancement ? Merci.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <div class="notif-time">08:31</div>
+          <div class="unread-dot"></div>
+        </div>
+      </div>
+
+      <div class="notif-card n-amber" onclick="markRead(this)">
+        <div class="notif-icon ni-amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 01-3.46 0"/>
+          </svg>
+        </div>
+        <div class="notif-body">
+          <div class="notif-title">Rappel — Intervention programmée dans 2h</div>
+          <div class="notif-text">Pompe Grundfos CR 32-8 · Site Lyon. Démarrez l'intervention avant 11h00 pour respecter l'engagement client.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+          <div class="notif-time">08:15</div>
+          <div class="unread-dot"></div>
+        </div>
+      </div>
+
+      <!-- Read / older -->
+      <div class="day-label">Aujourd'hui — lues</div>
+
+      <div class="notif-card n-green read" onclick="markRead(this)">
+        <div class="notif-icon ni-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <div class="notif-body">
+          <div class="notif-title">Synchronisation réussie</div>
+          <div class="notif-text">3 rapports envoyés à SAP · 2 PDF téléchargés en cache offline (Manuel_GA37.pdf, Fiche_CR32.pdf).</div>
+        </div>
+        <div class="notif-time">07:58</div>
+      </div>
+
+      <div class="notif-card n-gray read" onclick="markRead(this)">
+        <div class="notif-icon ni-gray">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <path d="M12 18v-6M9 15h6"/>
+          </svg>
+        </div>
+        <div class="notif-body">
+          <div class="notif-title">PDF téléchargés pour la journée</div>
+          <div class="notif-text">Tous les documents techniques liés à vos interventions du jour sont disponibles hors ligne.</div>
+        </div>
+        <div class="notif-time">07:55</div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
