@@ -168,7 +168,16 @@ const STATUS_CONFIG = {
 };
 
 function toggleStatusMenu() {
-  document.getElementById('status-menu').classList.toggle('open');
+  const menu  = document.getElementById('status-menu');
+  const badge = document.getElementById('status-badge');
+  if (menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    return;
+  }
+  const r = badge.getBoundingClientRect();
+  menu.style.top  = (r.bottom + 6) + 'px';
+  menu.style.left = r.left + 'px';
+  menu.classList.add('open');
 }
 
 function setStatus(key) {

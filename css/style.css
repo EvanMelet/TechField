@@ -265,7 +265,7 @@ html, body {
 
 /* ── STATUS PICKER ───────────────────────────────────── */
 .status-picker {
-  position: relative;
+  display: inline-flex;
 }
 
 .status-picker .badge {
@@ -285,15 +285,13 @@ html, body {
 
 .status-menu {
   display: none;
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
+  position: fixed;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   min-width: 175px;
-  z-index: 200;
+  z-index: 9999;
   overflow: hidden;
 }
 
